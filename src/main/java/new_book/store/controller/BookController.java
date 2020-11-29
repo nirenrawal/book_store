@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -31,6 +32,33 @@ public class BookController {
             Book _book = bookRepository.save(book);
             return new ResponseEntity<>(_book, HttpStatus.CREATED);
         } catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PutMapping("/books/{bookId}")
+    public ResponseEntity<Book> updateTutorial(@PathVariable("bookId") int bookId, @RequestBody Book book) {
+        Optional<Book> bookData = bookRepository.findById(bookId);
+
+        if (bookData.isPresent()) {
+            Book _book = bookData.get();
+            _book.setTitle(book.getTitle());
+            _book.setEdition(book.getEdition());
+            _book.setPrice(book.getPrice());
+            _book.setAuthorByAuthorId(book.getAuthorByAuthorId());
+            _book.setCategoryByCategoryId(book.getCategoryByCategoryId());
+            return new ResponseEntity<>(bookRepository.save(_book), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @DeleteMapping("/books/{bookId}")
+    public ResponseEntity<HttpStatus> deleteBook(@PathVariable("bookId") int bookId) {
+        try {
+            bookRepository.deleteById(bookId);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
