@@ -11,6 +11,13 @@ public class Book {
     private Author authorByAuthorId;
     private Category categoryByCategoryId;
 
+
+    public Book(String title, String edition, double price) {
+        this.title = title;
+        this.edition = edition;
+        this.price = price;
+    }
+
     @Id
     @Column(name = "book_id", nullable = false)
     public int getBookId() {
