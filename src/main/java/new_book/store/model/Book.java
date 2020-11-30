@@ -11,6 +11,8 @@ public class Book {
     private Author authorByAuthorId;
     private Category categoryByCategoryId;
 
+    public Book() {
+    }
 
     public Book(String title, String edition, double price) {
         this.title = title;
