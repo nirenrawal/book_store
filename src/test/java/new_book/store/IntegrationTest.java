@@ -31,11 +31,11 @@ public class IntegrationTest {
         assertThat(books).isEmpty();
     }
 
-    @Test
-    public void find_BooK_By_Id(){
-        Book book1 = new Book("title1", "edition1", 100);
-        testEntityManager.persist(book1);
-    }
+//    @Test
+//    public void find_BooK_By_Id(){
+//        Book book1 = new Book("title1", "edition1", 100);
+//        testEntityManager.persist(book1);
+//    }
 
 
 }

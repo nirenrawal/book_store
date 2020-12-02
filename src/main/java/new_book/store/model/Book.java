@@ -8,16 +8,18 @@ public class Book {
     private String title;
     private String edition;
     private double price;
+    private String description;
     private Author authorByAuthorId;
     private Category categoryByCategoryId;
 
     public Book() {
     }
 
-    public Book(String title, String edition, double price) {
+    public Book(String title, String edition, double price, String description) {
         this.title = title;
         this.edition = edition;
         this.price = price;
+        this.description = description;
     }
 
     @Id
@@ -60,6 +62,17 @@ public class Book {
         this.price = price;
     }
 
+    @Lob
+    @Basic
+    @Column(name = "description")
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -72,9 +85,11 @@ public class Book {
         if (Double.compare(book.price, price) != 0) return false;
         if (title != null ? !title.equals(book.title) : book.title != null) return false;
         if (edition != null ? !edition.equals(book.edition) : book.edition != null) return false;
+        if (description != null ? !description.equals(book.description) : book.description != null) return false;
 
         return true;
     }
+
 
     @Override
     public int hashCode() {
@@ -83,6 +98,7 @@ public class Book {
         result = bookId;
         result = 31 * result + (title != null ? title.hashCode() : 0);
         result = 31 * result + (edition != null ? edition.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
         temp = Double.doubleToLongBits(price);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
 
