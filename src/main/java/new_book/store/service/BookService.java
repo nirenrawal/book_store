@@ -57,6 +57,7 @@ public class BookService {
             book1.setTitle(book.getTitle());
             book1.setEdition(book.getEdition());
             book1.setPrice(book.getPrice());
+            book1.setImageUrl(book.getImageUrl());
             book1.setDescription(book.getDescription());
             book1.setAuthorByAuthorId(book.getAuthorByAuthorId());
             book1.setCategoryByCategoryId(book.getCategoryByCategoryId());

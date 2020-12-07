@@ -8,6 +8,7 @@ public class Book {
     private String title;
     private String edition;
     private double price;
+    private String imageUrl;
     private String description;
     private Author authorByAuthorId;
     private Category categoryByCategoryId;
@@ -64,6 +65,16 @@ public class Book {
     public void setPrice(double price) {
         this.price = price;
     }
+    @Lob
+    @Basic
+    @Column(name = "image_url")
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
     @Lob
     @Basic
@@ -89,6 +100,7 @@ public class Book {
         if (title != null ? !title.equals(book.title) : book.title != null) return false;
         if (edition != null ? !edition.equals(book.edition) : book.edition != null) return false;
         if (description != null ? !description.equals(book.description) : book.description != null) return false;
+        if (imageUrl != null ? !imageUrl.equals(book.imageUrl) : book.imageUrl != null) return false;
 
         return true;
     }
@@ -102,6 +114,7 @@ public class Book {
         result = 31 * result + (title != null ? title.hashCode() : 0);
         result = 31 * result + (edition != null ? edition.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (imageUrl != null ? imageUrl.hashCode() : 0);
         temp = Double.doubleToLongBits(price);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
 
@@ -127,4 +140,6 @@ public class Book {
     public void setCategoryByCategoryId(Category categoryByCategoryId) {
         this.categoryByCategoryId = categoryByCategoryId;
     }
+
+
 }
