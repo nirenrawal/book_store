@@ -10,6 +10,12 @@ public class Author {
     private int authorId;
     private String authorName;
 
+    public Author() {
+    }
+
+    public Author(String authorName) {
+        this.authorName = authorName;
+    }
 
     @Id
     @Column(name = "author_id", nullable = false)

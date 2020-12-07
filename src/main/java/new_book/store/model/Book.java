@@ -15,11 +15,14 @@ public class Book {
     public Book() {
     }
 
-    public Book(String title, String edition, double price, String description) {
+    public Book(String title, String edition, double price, String description,
+                Author authorByAuthorId, Category categoryByCategoryId) {
         this.title = title;
         this.edition = edition;
         this.price = price;
         this.description = description;
+        this.authorByAuthorId = authorByAuthorId;
+        this.categoryByCategoryId = categoryByCategoryId;
     }
 
     @Id
