@@ -16,7 +16,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DataJpaTest
+//@DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class IntegrationTest{
 
@@ -44,7 +44,7 @@ class IntegrationTest{
 //    }
 
 
-    @Test
+    //@Test
     void empty_repository_dont_find_anything(){
         Iterable<Book> books = bookRepository.findAll();
         assertThat(books).isEmpty();
@@ -54,7 +54,7 @@ class IntegrationTest{
         assertThat(categories).isEmpty();
     }
 
-    @Test
+    //@Test
     void store_books_authors_categories(){
         Author author = new Author("Thomas");
         Category category = new Category("Science");
@@ -79,7 +79,7 @@ class IntegrationTest{
 
     }
 
-        @Test
+        //@Test
         void should_find_all_content_from_all_the_classes(){
 
 //            authorRepository.save(new Author("Nirendra"));
